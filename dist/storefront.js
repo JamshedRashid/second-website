@@ -68,7 +68,7 @@ function initStorefrontMotion() {
     pending=false;
     const h=innerHeight, rect=entrance.getBoundingClientRect();
     const p=Math.max(0,Math.min(1,-rect.top/Math.max(1,entrance.offsetHeight-h)));
-    root.style.setProperty('--hero-progress',paused?0:p);
+    root.style.setProperty('--hero-progress',paused||mobile.matches||mq.matches?0:p);
     if(!mobile.matches && !mq.matches){
       const r=editorial.getBoundingClientRect();
       const ep=Math.max(0,Math.min(.999,-r.top/Math.max(1,editorial.offsetHeight-h)));
