@@ -1,40 +1,47 @@
 # Knotwork Globe Limited
 
-A Bangladesh mobile-store demo with a liquid-glass storefront, animated category sections, phone Colour Studio, catalogue filters, configurable bag, and demo checkout.
+A Bangladesh phone and accessory showroom with a liquid-glass storefront, manufacturer-sourced comparison lab, protected owner inventory and persistent demo checkout records.
 
 ## Run locally
 
-No build step or package installation is needed. With Python 3 installed, run from the repository root:
+Use Node 22.13+ and the pnpm version declared in package.json.
 
 ```sh
-python3 -m http.server 8000 --directory dist
+pnpm install --frozen-lockfile
+node scripts/sync-storefront.mjs
+pnpm dev
 ```
 
-Open http://localhost:8000 in your browser. You can also serve `dist` with VS Code Live Server or any static web server.
+The storefront source is in `storefront/`. `public/` contains its synced assets. Run the sync script after editing storefront files. Hosted APIs are in `app/api/`, and D1 schema/migrations are in `db/` and `drizzle/`.
 
-## Files
+For a frontend-only preview without API support:
 
-- `dist/index.html`: page shell and navigation.
-- `dist/storefront.js` and `dist/storefront.css`: animated storefront entrance.
-- `dist/app.js`: routing, existing Colour Studio, catalogue, bag, and checkout.
-- `dist/catalog.js`: existing illustrative product data and configurations.
-- `dist/style.css`: original catalogue and studio styles.
-- `dist/assets/`: local product images and source metadata.
-- `notes/storefront-reference.md`: reference-video observations and design decisions.
+```sh
+python3 -m http.server 8000 --directory storefront
+```
 
-## Flow
+## Features
 
-Home → Phones → select a model → Colour Studio → choose colour/storage → add to bag.
-Sound, Charging, and Cases open their matching catalogue categories. Desktop editorial panels change on scroll; mobile and reduced-motion users see each section sequentially.
+- Responsive liquid-glass navigation, product galleries, mobile purchase bar and glass-tile add-to-bag animation.
+- Budget, brand, storage, stock and wishlist filters.
+- Two-phone comparison with manufacturer source links, grouped specs, difference filtering, search, size diagrams, display illustration, camera inspector and shareable URLs.
+- Exact-model case/protector options and charging / foldable compatibility guidance.
+- Owner-authorised inventory price, quantity and showroom-status updates in D1.
+- Signed-in persistent demo checkout records with server-calculated totals. Contact fields are never stored.
 
-## Live preview
+## Data and launch status
 
-https://aura-mobile-bd.faaah676767.chatgpt.site/
+Phone data was checked on 2026-10-04. See `storefront/spec-data.js` for official reference pages and the reference-market caveats. Fields that could not be verified are explicitly labelled. Apple RAM and mAh capacity are not inferred. Brightness, battery and charging claims are manufacturer figures, not independent benchmarks.
 
-The preview keeps its existing private access. This repository is a source snapshot; GitHub pushes do not automatically deploy to the ChatGPT-hosted site.
+Prices, accessories, inventory labels, delivery estimates and business policy text are illustrative. The shop must confirm suppliers, actual stock, imported SKU, contact details, warranty and return terms before accepting orders. No live payment or fulfilment is enabled. The owner console is protected server-side using dispatch-managed ChatGPT identity and the `ADMIN_EMAIL` runtime secret. It is never authorised solely by browser state.
 
-Prices and product data are illustrative. Checkout sends no order and takes no payment.
+## Validate
 
-## Validation
+```sh
+node tests/storefront.test.cjs
+pnpm exec tsc --noEmit
+node scripts/sync-storefront.mjs
+pnpm build
+```
 
-JavaScript syntax and route/configuration smoke checks passed, including phone selection, colour/storage pricing, accessory categories, mixed bag, and checkout. Live visual verification was blocked by the preview's private sign-in screen.
+D1 migrations are applied by Sites on publication. Local D1 setup follows the Sites starter migration workflow.

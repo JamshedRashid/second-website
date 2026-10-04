@@ -1,0 +1,118 @@
+[
+  {
+    "id": "iphone-18-pro-max",
+    "sources": [
+      "https://www.apple.com/iphone-18-pro/specs/"
+    ]
+  },
+  {
+    "id": "iphone-18-pro",
+    "sources": [
+      "https://www.apple.com/iphone-18-pro/specs/"
+    ]
+  },
+  {
+    "id": "iphone-duo",
+    "sources": [
+      "https://www.apple.com/iphone-duo/specs/"
+    ]
+  },
+  {
+    "id": "nothing-phone-4a",
+    "sources": [
+      "https://nothing.tech/products/phone-4a"
+    ]
+  },
+  {
+    "id": "nothing-phone-4a-pro",
+    "sources": [
+      "https://nothing.tech/products/phone-4a-pro"
+    ]
+  },
+  {
+    "id": "galaxy-s26",
+    "sources": [
+      "https://mdsmobile.ae/products/samsung-galaxy-s26-5g-12gb-512gb-silver-shadow",
+      "https://mdsmobile.ae/products/samsung-galaxy-s26-5g-12gb-512gb-pink-gold",
+      "https://mdsmobile.ae/products/samsung-galaxy-s26-5g-12gb-512gb-cobalt-violet",
+      "https://mdsmobile.ae/products/samsung-galaxy-s26-5g-12gb-512gb-sky-blue",
+      "https://mdsmobile.ae/products/samsung-galaxy-s26-5g-12gb-512gb-white",
+      "https://mdsmobile.ae/products/samsung-galaxy-s26-5g-12gb-512gb-black"
+    ]
+  },
+  {
+    "id": "galaxy-s26-plus",
+    "sources": [
+      "https://mdsmobile.ae/products/samsung-galaxy-s26-5g-12gb-512gb-silver-shadow-1",
+      "https://mdsmobile.ae/products/samsung-galaxy-s26-5g-12gb-512gb-pink-gold-1",
+      "https://mdsmobile.ae/products/samsung-galaxy-s26-plus-5g-12gb-512gb-white",
+      "https://mdsmobile.ae/products/samsung-galaxy-s26-plus-5g-12gb-512gb-cobalt-violet",
+      "https://mdsmobile.ae/products/samsung-galaxy-s26-plus-5g-12gb-512gb-black",
+      "https://mdsmobile.ae/products/samsung-galaxy-s26-plus-5g-12gb-512gb-sky-blue"
+    ]
+  },
+  {
+    "id": "galaxy-s26-ultra",
+    "sources": [
+      "https://mdsmobile.ae/products/samsung-galaxy-s26-ultra-5g-12gb-1tb-silver-shadow",
+      "https://mdsmobile.ae/products/samsung-galaxy-s26-ultra-5g-12gb-1tb-pink-gold",
+      "https://mdsmobile.ae/products/samsung-galaxy-s26-ultra-5g-16gb-1tb-cobalt-violet",
+      "https://mdsmobile.ae/products/samsung-galaxy-s26-ultra-5g-16gb-1tb-sky-blue",
+      "https://mdsmobile.ae/products/samsung-galaxy-s26-ultra-5g-16gb-1tb-white",
+      "https://mdsmobile.ae/products/samsung-galaxy-s26-ultra-5g-16gb-1tb-black"
+    ]
+  },
+  {
+    "id": "galaxy-s26-fe",
+    "sources": [
+      "https://mdsmobile.ae/products/samsung-galaxy-s26-fe-5g-8gb-256gb-pistachio",
+      "https://mdsmobile.ae/products/samsung-galaxy-s26-fe-5g-8gb-512gb-graphite",
+      "https://mdsmobile.ae/products/samsung-galaxy-s26-fe-5g-8gb-256gb-blueberry"
+    ]
+  },
+  {
+    "id": "galaxy-z-flip8",
+    "sources": [
+      "https://mdsmobile.ae/products/samsung-galaxy-z-flip8-12gb-512gb-cream",
+      "https://mdsmobile.ae/products/samsung-galaxy-z-flip8-12gb-512gb-graphite",
+      "https://mdsmobile.ae/products/samsung-galaxy-z-flip8-12gb-512gb-pink"
+    ]
+  },
+  {
+    "id": "galaxy-z-fold8",
+    "sources": [
+      "https://mdsmobile.ae/products/samsung-galaxy-z-fold8-16gb-1tb-cream",
+      "https://mdsmobile.ae/products/samsung-galaxy-z-fold8-16gb-1tb-graphite",
+      "https://mdsmobile.ae/products/samsung-galaxy-z-fold8-16gb-1tb-lavender"
+    ]
+  },
+  {
+    "id": "galaxy-z-fold8-ultra",
+    "sources": [
+      "https://mdsmobile.ae/products/samsung-galaxy-z-fold8-ultra-16gb-1tb-cream",
+      "https://mdsmobile.ae/products/samsung-galaxy-z-fold8-ultra-16gb-1tb-violet-shadow",
+      "https://mdsmobile.ae/products/samsung-galaxy-z-fold8-ultra-16gb-1tb-graphite"
+    ]
+  },
+  {
+    "id": "pixel-11",
+    "sources": [
+      "https://fi.google.com/about/phones/pixel-11-specs"
+    ]
+  },
+  {
+    "id": "pixel-11-pro",
+    "sources": [
+      "https://fi.google.com/about/phones/pixel-11-pro-specs"
+    ]
+  },
+  {
+    "id": "airpods-pro"
+  },
+  {
+    "id": "usb-c-charger"
+  },
+  {
+    "id": "silicone-case"
+  }
+]

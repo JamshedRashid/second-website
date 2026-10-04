@@ -1,0 +1,8 @@
+import {getDb} from '../../../db';
+import {inventory,demoOrders} from '../../../db/schema';
+import {adminUser,sameOrigin} from '../../../lib/shop-auth';
+import {desc} from 'drizzle-orm';
+import catalog from '../../../lib/catalogue.json';
+export const dynamic='force-dynamic';
+export async function GET(){if(!await adminUser())return Response.json({error:'Owner sign-in required'},{status:403});const db=getDb();return Response.json({inventory:await db.select().from(inventory),orders:await db.select().from(demoOrders).orderBy(desc(demoOrders.createdAt)).limit(100)},{headers:{'Cache-Control':'no-store'}})}
+export async function POST(request:Request){if(!await adminUser()||!sameOrigin(request))return Response.json({error:'Not authorised'},{status:403});if(Number(request.headers.get('content-length'))>4096)return Response.json({error:'Too large'},{status:413});let data: {id:string;status:string;price:number;quantity:number};try{data=await request.json() as typeof data}catch{return Response.json({error:'Invalid JSON'},{status:400})}const {id,status,price,quantity}=data;const statuses=['Confirm stock','In stock (demo)','Pre-order (demo)','Sold out (demo)'];if(!catalog.some(p=>p.id===id)||!statuses.includes(status)||!Number.isInteger(price)||price<0||price>1000000||!Number.isInteger(quantity)||quantity<0||quantity>100000)return Response.json({error:'Invalid inventory values'},{status:400});await getDb().insert(inventory).values({id,status,price,quantity,updatedAt:new Date().toISOString()}).onConflictDoUpdate({target:inventory.id,set:{status,price,quantity,updatedAt:new Date().toISOString()}});return Response.json({ok:true})}
