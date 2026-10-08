@@ -24,6 +24,7 @@ python3 -m http.server 8000 --directory storefront
 
 - Responsive liquid-glass navigation, product galleries, mobile purchase bar and glass-tile add-to-bag animation.
 - Budget, brand, storage, stock and wishlist filters.
+- Knot robot shopping guide with budget shortlists, plain-language comparisons, glossary, optional voice features and contextual accessory suggestions.
 - Two-phone comparison with manufacturer source links, grouped specs, difference filtering, search, size diagrams, display illustration, camera inspector and shareable URLs.
 - Exact-model case/protector options and charging / foldable compatibility guidance.
 - Owner-authorised inventory price, quantity and showroom-status updates in D1.
@@ -45,3 +46,11 @@ pnpm build
 ```
 
 D1 migrations are applied by Sites on publication. Local D1 setup follows the Sites starter migration workflow.
+
+## Knot AI connection
+
+Knot has catalogue guidance without a key. Live conversational answers use the server-only `/api/advisor` endpoint and OpenAI Responses API. Configure `OPENAI_API_KEY` as a Sites runtime secret to activate them; never commit it or put it in storefront JavaScript. Optional `OPENAI_MODEL` defaults to `gpt-4.1-mini`. Activate the connection through the OpenAI Developers plugin API-key workflow, then redeploy.
+
+The endpoint grounds answers in the catalogue, synced manufacturer data and current shared inventory. Messages and selected product IDs go to OpenAI only when configured. API response storage is disabled, while provider data policies still apply. Chat history lives in page memory, is cleared by New chat, and is not stored in D1 or browser storage. Voice dictation is optional and may be processed by the browser provider. Rate limiting is best-effort per Worker isolate; add a durable budget/rate control before exposing a paid AI endpoint to a large public audience.
+
+Validation: `node tests/advisor.test.cjs` additionally checks budgets, compatibility exclusions and plain-language caveats. Live provider end-to-end verification requires the runtime key.

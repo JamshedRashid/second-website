@@ -1,0 +1,14 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const context=vm.createContext({console});
+vm.runInContext(fs.readFileSync('storefront/catalog.js','utf8')+'\n'+fs.readFileSync('storefront/spec-data.js','utf8')+`\nconst money=n=>'৳'+n.toLocaleString('en-BD');const stockOf=p=>'Confirm stock';\n`+fs.readFileSync('storefront/advisor-core.js','utf8'),context);
+const run=s=>vm.runInContext(s,context);
+assert.equal(run("knotBudget('under ৳70,000')"),70000);assert.equal(run("knotBudget('budget 1.5 lakh')"),150000);assert.equal(run("knotBudget('under 70k')"),70000);
+assert.equal(run("knotGuide('under 10000',{}, {budget:null,priority:'value'}).productIds.length"),0);
+assert(run("knotGuide('under 70000',{}, {budget:null,priority:'value'}).productIds.every(id=>products.find(p=>p.id===id).price<=70000)"));
+assert(run("knotKit(products.find(p=>p.id==='galaxy-z-fold8')).every(x=>!['screen-protector','rugged-case','silicone-case'].includes(x.product.id))"));
+assert(run("knotKit(products.find(p=>p.id==='iphone-18-pro')).every(x=>x.product.id!=='silicone-case')"));
+assert.match(run("knotCompare(products.filter(p=>['iphone-18-pro','galaxy-s26'].includes(p.id)),'camera').text"),/Megapixels alone/);
+assert.match(run("knotGuide('what is refresh rate?',{}, {budget:null,priority:'value'}).text"),/does not guarantee/);
+assert.match(run("knotGuide('help me understand this phone',{product:'iphone-18-pro'}, {budget:null,priority:'value'}).text"),/iPhone 18 Pro/);
+const postcss=require('../node_modules/.pnpm/'+fs.readdirSync('node_modules/.pnpm').find(n=>n.startsWith('postcss@'))+'/node_modules/postcss');postcss.parse(fs.readFileSync('storefront/advisor.css','utf8'));
+console.log('Passed: budgets, no over-budget picks, foldable protection, exact-fit exclusions, comparison caveats, phone context and CSS.');
